@@ -14,7 +14,13 @@ class RequestStateScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 24,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(

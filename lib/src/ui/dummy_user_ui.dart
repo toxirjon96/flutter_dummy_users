@@ -67,6 +67,11 @@ class _DummyUserUIState extends State<DummyUserUI> {
         user: users![userIndex]!,
         next: nextUser,
       );
+    } else if (requestState == 'loading') {
+      screenWidget = const RequestStateScaffold(
+        title: "Loading...",
+        info: "Loading...",
+      );
     } else {
       screenWidget = RequestStateScaffold(title: "Error", info: requestState);
     }
