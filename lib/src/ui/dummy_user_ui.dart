@@ -71,6 +71,7 @@ class _DummyUserUIState extends State<DummyUserUI> {
       screenWidget = RequestStateScaffold(title: "Error", info: requestState);
     }
     return MaterialApp(
+      title: "Dummy Users",
       home: screenWidget,
     );
   }
