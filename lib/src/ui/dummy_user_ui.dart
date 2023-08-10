@@ -12,6 +12,12 @@ class _DummyUserUIState extends State<DummyUserUI> {
   List<Users?>? users;
   String requestState = 'loading';
 
+  void changeRequestState(String state) {
+    setState(() {
+      requestState = state;
+    });
+  }
+
   final String baseUrl = 'https://dummyjson.com';
 
   Future<void> makeRequest() async {
@@ -26,18 +32,18 @@ class _DummyUserUIState extends State<DummyUserUI> {
       if (users != null) {
         if (users![userIndex] != null) {
           setState(() {
-            requestState = "user";
+            changeRequestState("user");
           });
         }
       }
     } on HttpUrlException catch (e) {
-      requestState = e.message;
+      changeRequestState(e.message);
     } on JsonDecodeException catch (e) {
-      requestState = e.message;
+      changeRequestState(e.message);
     } on HttpStatusCodeException catch (e) {
-      requestState = e.message;
+      changeRequestState(e.message);
     } on HttpRequstException catch (e) {
-      requestState = e.message;
+      changeRequestState(e.message);
     }
   }
 
@@ -58,10 +64,8 @@ class _DummyUserUIState extends State<DummyUserUI> {
 
   @override
   Widget build(BuildContext context) {
-    Widget screenWidget = const RequestStateScaffold(
-      title: "Loading...",
-      info: "Loading...",
-    );
+    Widget? screenWidget;
+
     if (requestState == "user") {
       screenWidget = UserScaffold(
         user: users![userIndex]!,
