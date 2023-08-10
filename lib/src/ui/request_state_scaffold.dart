@@ -17,7 +17,7 @@ class RequestStateScaffold extends StatelessWidget {
         title: Text(
           title,
           style: const TextStyle(
-            fontSize: 24,
+            fontSize: 18,
             color: Colors.white,
           ),
         ),
@@ -36,6 +36,10 @@ class RequestStateScaffold extends StatelessWidget {
         child: Center(
           child: Text(
             info,
+            style: const TextStyle(
+              fontSize: 24,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
